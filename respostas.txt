@@ -1,0 +1,105 @@
+1) 
+public class Celula {
+  Object element;
+  Celula proximo;
+
+  public Celula(Object element) {
+    this.element = element;
+    this.proximo = null;
+  }
+
+}
+
+2) A função da classe ListaCirc é gerenciar as celulas (ou nós) com os elementos, 
+e o construtor coloca o cursor como null pos em uma lista circular com um unico elementos
+o primeiro elemento tambem é o ultimo.
+
+3) 
+  public void proximo() {
+    cursor = cursor.proximo;
+  }
+
+4) A lista é circular porque cada nó possui um ponteiro para o próximo nó,
+e o último nó aponta de volta para o primeiro nó
+
+  public void adiciona(Object element) {
+    Celula nodo = new Celula(element);
+
+    if (cursor == null) {
+      nodo.proximo = nodo;
+      cursor = nodo;
+    } else {
+      nodo.proximo = cursor.proximo;
+      cursor.proximo = nodo;
+      cursor = nodo;
+    }
+    total++;
+  }
+
+5)
+  public Object getElement() {
+    return cursor.element;
+  }
+
+  public int tamanho() {
+    return total;
+  }
+
+
+6)
+Verificação de Lista Vazia:
+
+if(cursor == null) return "[]";
+
+Se a lista estiver vazia (cursor for null), o método retorna "[]", que representa uma lista vazia.
+
+Início da String:
+
+String s = "["+this.getelement();
+
+Inicializa a string com o elemento atual apontado pelo cursor.
+
+Armazena o Cursor Atual:
+
+Celula velhocursor = cursor;
+
+Armazena a posição atual do cursor para saber quando a lista inteira foi percorrida.
+
+Percorre a Lista:
+
+for(this.proximo(); velhocursor != cursor; this.proximo())
+    s += "," + this.getelement();
+
+Avança o cursor para o próximo elemento (this.proximo()) e adiciona o elemento atual à string. O laço continua até que o cursor retorne à posição inicial (velhocursor).
+
+Finalização da String:
+
+return s + "]";
+
+
+implementação:
+
+    public String toString() {
+        if (cursor == null) return "[]";
+        String s = "[" + this.getelement();
+        Celula velhocursor = cursor;
+        for (this.proximo(); velhocursor != cursor; this.proximo())
+            s += "," + this.getelement();
+        return s + "]";
+    }
+
+
+7) retorna o ultimo elemento da lista circular
+  public boolean ultElement() {
+    return (cursor == cursor.proximo);
+  }
+
+8) recebe uma posição e avança para o proximo elemento até chegar no elemento pedido
+
+  public void avanca(int posicao) {
+    for (int i = 1; i < posicao; i++) {
+      this.proximo();
+    }
+  }
+
+9) 
