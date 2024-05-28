@@ -102,4 +102,45 @@ implementação:
     }
   }
 
-9) 
+9)
+  public void remove() {
+    if (cursor != null) {
+      cursor = null;
+    } else {
+      cursor.proximo = cursor.proximo.proximo;
+      total--;
+    }
+  }
+
+10) 
+
+a) Após a inserção dos elementos na lista, ao pegar um elemento da lista sem realizar nenhuma outra operação, o resultado será o elemento que está atualmente apontado pelo cursor.
+
+b) Ao deslocar a referência da célula para o próximo, o comportamento da estrutura será mover o cursor para a próxima célula na lista.
+
+c)
+
+public class Main {
+    public static void main(String[] args) {
+        ListaCircular lista = new ListaCircular();
+        lista.adiciona("João");
+        lista.adiciona("Maria");
+        lista.adiciona("Pedro");
+        lista.adiciona("Ana");
+        lista.adiciona("Carlos");
+
+        System.out.println(lista);
+    }
+}
+
+
+d) 
+String s[] = {"M","A","C"};
+for(int i=0;i<=s.length-1;i++) {
+    lista.adiciona(s[i]);
+}
+lista.remove();
+System.out.println(lista.getElement());
+System.out.println(lista);
+
+Neste código, são adicionadas as strings "M", "A" e "C" à lista circular. Em seguida, é chamado o método remove(), que remove o elemento atualmente apontado pelo cursor (o último adicionado, que é "C"). Depois, é impresso o elemento atual (que agora será "M") e a lista completa.
